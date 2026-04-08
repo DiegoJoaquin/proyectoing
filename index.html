@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingenov | Innovación e Ingeniería en Aguas</title>
+    <meta name="description" content="Ingenov: Especialistas en tratamiento de aguas residuales y residuos líquidos industriales. Consultoría ambiental y soluciones sustentables.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <a href="#" class="logo">INGE<span>NOV</span></a>
+        <nav>
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#nosotros">Empresa</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="video-container">
+                <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=2000">
+                    <source src="https://player.vimeo.com/external/494163956.sd.mp4?s=694dc5067466184a42b7816f1ef14032ba8e5033&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content hidden">
+                <h1>Ingenov. Innovación e Ingeniería.</h1>
+                <p>Tratamiento de Aguas Residuales y Residuos Líquidos Industriales (RILes).</p>
+                <a href="#servicios" class="btn-primary">Ver Soluciones</a>
+            </div>
+        </section>
+
+        <!-- Nosotros Section -->
+        <section id="nosotros">
+            <div class="container">
+                <div class="about-image hidden">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000" alt="Ingenov Engineering">
+                </div>
+                <div class="about-text hidden">
+                    <h2 class="section-title">Nuestra Empresa</h2>
+                    <p>Con años de experiencia liderando el sector de la ingeniería ambiental, en Ingenov nos enfocamos en el desarrollo de soluciones sustentables para la gestión de recursos hídricos.</p>
+                    <p>Nuestra misión es transformar los desafíos industriales en oportunidades de economía circular, optimizando el uso del agua y garantizando el cumplimiento normativo con los más altos estándares tecnológicos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios Section -->
+        <section id="servicios">
+            <div class="container" style="max-width: 1200px; margin: 0 auto;">
+                <h2 class="section-title hidden">Servicios Especializados</h2>
+                <div class="services-grid">
+                    <div class="service-card hidden">
+                        <span class="service-icon">⚙️</span>
+                        <h3>Ingeniería y Diseño</h3>
+                        <p>Desarrollamos proyectos a medida, desde el concepto inicial hasta la ingeniería de detalle proyectando plantas de tratamiento de alta eficiencia.</p>
+                    </div>
+                    <div class="service-card hidden">
+                        <span class="service-icon">🌱</span>
+                        <h3>Consultoría Ambiental</h3>
+                        <p>Gestión de permisos, cumplimiento normativo y declaraciones de impacto ambiental para asegurar la viabilidad de sus operaciones.</p>
+                    </div>
+                    <div class="service-card hidden">
+                        <span class="service-icon">🛠️</span>
+                        <h3>Operación y Mantención</h3>
+                        <p>Servicio técnico experto y operación continua de sistemas de tratamiento para garantizar un rendimiento óptimo y duradero.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyectos Section -->
+        <section id="proyectos">
+            <div class="parallax-bg"></div>
+            <div class="projects-container">
+                <h2 class="section-title hidden" style="color: var(--white); border-color: var(--accent);">Proyectos Destacados</h2>
+                <div class="projects-grid">
+                    <div class="project-item hidden" data-video="https://player.vimeo.com/external/371433846.sd.mp4?s=2315b6325e0b02e7753695d2906ec5418933b91a&profile_id=164&oauth2_token_id=57447761">
+                        <img src="https://images.unsplash.com/photo-1557844352-761f2565b576?auto=format&fit=crop&q=80&w=1000" alt="Viña Caliterra" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Viña Caliterra</h3>
+                            <button class="btn-video" onclick="openModal('Viña Caliterra Project')">Ver Video del Proyecto</button>
+                        </div>
+                    </div>
+                    <div class="project-item hidden" data-video="https://player.vimeo.com/external/371433846.sd.mp4?s=2315b6325e0b02e7753695d2906ec5418933b91a&profile_id=164&oauth2_token_id=57447761">
+                        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b0c3ebb?auto=format&fit=crop&q=80&w=1000" alt="Viña Errázuriz" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Viña Errázuriz</h3>
+                            <button class="btn-video" onclick="openModal('Viña Errázuriz Project')">Ver Video del Proyecto</button>
+                        </div>
+                    </div>
+                    <!-- More projects as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto">
+            <div class="contact-wrapper">
+                <h2 class="section-title hidden">Contáctanos</h2>
+                <form class="contact-form hidden" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label for="name">Nombre Completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder=" " required>
+                        <label for="email">Email Corporativo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder=" " required>
+                        <label for="subject">Asunto</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder=" " required></textarea>
+                        <label for="message">Mensaje</label>
+                    </div>
+                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ingenov. Todos los derechos reservados. Expertos en Ingeniería Ambiental.</p>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="videoPlayerContainer">
+                <iframe width="100%" height="562.5" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
