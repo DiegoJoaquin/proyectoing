@@ -43,22 +43,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('hero-particles');
     const ctx = canvas.getContext('2d');
     let width, height, particles;
+    let mouseObj = { x: null, y: null, radius: 120 }; // Radius of interaction repel
+
+    // Ensure pointer events allowed on canvas to track mouse/touch over hero section
+    const heroSection = document.getElementById('hero');
+
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseObj.x = e.clientX - rect.left;
+        mouseObj.y = e.clientY - rect.top;
+    });
+    
+    // Add touch support for mobile interaction
+    heroSection.addEventListener('touchmove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseObj.x = e.touches[0].clientX - rect.left;
+        mouseObj.y = e.touches[0].clientY - rect.top;
+    });
+    
+    heroSection.addEventListener('mouseleave', () => { mouseObj.x = null; mouseObj.y = null; });
+    heroSection.addEventListener('touchend', () => { mouseObj.x = null; mouseObj.y = null; });
 
     function initParticles() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = document.getElementById('hero').offsetHeight;
         particles = [];
         
-        // Create particles simulating water bubbles/tech data points
-        const numParticles = window.innerWidth < 768 ? 40 : 100;
+        const numParticles = window.innerWidth < 768 ? 50 : 120;
         for (let i = 0; i < numParticles; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                radius: Math.random() * 2 + 1,
-                vx: Math.random() * 0.5 - 0.25,
-                vy: Math.random() * -1 - 0.5, // Move upwards like water bubbles
-                alpha: Math.random() * 0.5 + 0.1
+                radius: Math.random() * 2 + 1.5,
+                vx: (Math.random() - 0.5) * 1.5, // Float dynamically in all directions
+                vy: (Math.random() - 0.5) * 1.5,
+                alpha: Math.random() * 0.5 + 0.2
             });
         }
     }
@@ -67,15 +86,25 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, width, height);
         
         particles.forEach(p => {
+            // Interactive Repel Force (repels dots from mouse/finger)
+            if (mouseObj.x != null && mouseObj.y != null) {
+                let dx = mouseObj.x - p.x;
+                let dy = mouseObj.y - p.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouseObj.radius) {
+                    const force = (mouseObj.radius - distance) / mouseObj.radius;
+                    p.x -= (dx / distance) * force * 5; // push horizontally
+                    p.y -= (dy / distance) * force * 5; // push vertically
+                }
+            }
+
             p.x += p.vx;
             p.y += p.vy;
             
-            // Reset if out of bounds
-            if (p.y < 0) {
-                p.y = height;
-                p.x = Math.random() * width;
-            }
+            // Wall bounce so points stay circulating
             if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
