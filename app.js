@@ -69,7 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         height = canvas.height = document.getElementById('hero').offsetHeight;
         particles = [];
         
-        const numParticles = window.innerWidth < 768 ? 50 : 120;
+        // ¡Triple de densidad de puntos para un efecto masivo y super tecnológico!
+        const numParticles = window.innerWidth < 768 ? 100 : 300;
         for (let i = 0; i < numParticles; i++) {
             particles.push({
                 x: Math.random() * width,
