@@ -3,145 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingenov | Innovación e Ingeniería en Aguas</title>
-    <meta name="description" content="Ingenov: Especialistas en tratamiento de aguas residuales y residuos líquidos industriales. Consultoría ambiental y soluciones sustentables.">
+    <title>Ingenov | Innovación e Ingeniería</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header id="main-header">
-        <a href="#" class="logo">INGE<span>NOV</span></a>
-        <nav>
+        <div class="logo">INGE<span>NOV</span></div>
+        <nav class="desktop-nav">
             <ul>
-                <li><a href="#hero">Inicio</a></li>
-                <li><a href="#nosotros">Empresa</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#hero">INICIO</a></li>
+                <li><a href="#servicios-areas">SERVICIOS</a></li>
+                <li><a href="#trabajos">TRABAJOS</a></li>
+                <li><a href="#conocenos">CONÓCENOS</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="video-container">
-                <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=2000">
-                    <source src="https://player.vimeo.com/external/494163956.sd.mp4?s=694dc5067466184a42b7816f1ef14032ba8e5033&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
-                    Tu navegador no soporta el tag de video.
-                </video>
-            </div>
+    <!-- HERO SECTION DINÁMICO 2026 -->
+    <section id="hero">
+        <div class="hero-bg-wrapper">
+            <!-- Imagen dinámica con zoom suave (Ken Burns) y Parallax -->
+            <div class="hero-image" id="dynamic-hero-img"></div>
+            <!-- Overlay para textura futurista y contraste -->
             <div class="hero-overlay"></div>
-            <div class="hero-content hidden">
-                <h1>Ingenov. Innovación e Ingeniería.</h1>
-                <p>Tratamiento de Aguas Residuales y Residuos Líquidos Industriales (RILes).</p>
-                <a href="#servicios" class="btn-primary">Ver Soluciones</a>
-            </div>
-        </section>
+            <!-- Partículas / Elementos flotantes agregados via JS para más dinamismo -->
+            <canvas id="hero-particles"></canvas>
+        </div>
+        
+        <div class="hero-content reveal-up">
+            <h1 class="glitch-text" data-text="INGENOV.">INGENOV.</h1>
+            <h2 class="hero-subtitle">Innovación e Ingeniería.</h2>
+            <p>Tratamiento de Aguas Residuales y Residuos Líquidos Industriales (RILes).</p>
+            <a href="#contacto" class="btn-primary">Contáctanos</a>
+        </div>
+    </section>
 
-        <!-- Nosotros Section -->
-        <section id="nosotros">
-            <div class="container">
-                <div class="about-image hidden">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000" alt="Ingenov Engineering">
+    <!-- SERVICIOS -->
+    <section id="servicios-areas">
+        <div class="container section-header reveal-up">
+            <h2>SERVICIOS</h2>
+            <p class="subtitle">SOLUCIONES INTEGRALES EN GESTIÓN DE AGUAS</p>
+        </div>
+        
+        <div class="container services-grid">
+            <div class="service-card reveal-up" style="transition-delay: 0.1s;">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
-                <div class="about-text hidden">
-                    <h2 class="section-title">Nuestra Empresa</h2>
-                    <p>Con años de experiencia liderando el sector de la ingeniería ambiental, en Ingenov nos enfocamos en el desarrollo de soluciones sustentables para la gestión de recursos hídricos.</p>
-                    <p>Nuestra misión es transformar los desafíos industriales en oportunidades de economía circular, optimizando el uso del agua y garantizando el cumplimiento normativo con los más altos estándares tecnológicos.</p>
+                <h3>Ingeniería especializada</h3>
+                <p>Nuestra amplia experiencia nos facilita la formulación técnica y ejecución de ingeniería ambiental avanzada.</p>
+            </div>
+            
+            <div class="service-card reveal-up" style="transition-delay: 0.2s;">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                 </div>
+                <h3>Evaluaciones Técnicas</h3>
+                <p>Realizamos un análisis exhaustivo para diagnosticar el estado actual y oportunidades de mejora.</p>
             </div>
-        </section>
-
-        <!-- Servicios Section -->
-        <section id="servicios">
-            <div class="container" style="max-width: 1200px; margin: 0 auto;">
-                <h2 class="section-title hidden">Servicios Especializados</h2>
-                <div class="services-grid">
-                    <div class="service-card hidden">
-                        <span class="service-icon">⚙️</span>
-                        <h3>Ingeniería y Diseño</h3>
-                        <p>Desarrollamos proyectos a medida, desde el concepto inicial hasta la ingeniería de detalle proyectando plantas de tratamiento de alta eficiencia.</p>
-                    </div>
-                    <div class="service-card hidden">
-                        <span class="service-icon">🌱</span>
-                        <h3>Consultoría Ambiental</h3>
-                        <p>Gestión de permisos, cumplimiento normativo y declaraciones de impacto ambiental para asegurar la viabilidad de sus operaciones.</p>
-                    </div>
-                    <div class="service-card hidden">
-                        <span class="service-icon">🛠️</span>
-                        <h3>Operación y Mantención</h3>
-                        <p>Servicio técnico experto y operación continua de sistemas de tratamiento para garantizar un rendimiento óptimo y duradero.</p>
-                    </div>
+            
+            <div class="service-card reveal-up" style="transition-delay: 0.3s;">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
                 </div>
-            </div>
-        </section>
-
-        <!-- Proyectos Section -->
-        <section id="proyectos">
-            <div class="parallax-bg"></div>
-            <div class="projects-container">
-                <h2 class="section-title hidden" style="color: var(--white); border-color: var(--accent);">Proyectos Destacados</h2>
-                <div class="projects-grid">
-                    <div class="project-item hidden" data-video="https://player.vimeo.com/external/371433846.sd.mp4?s=2315b6325e0b02e7753695d2906ec5418933b91a&profile_id=164&oauth2_token_id=57447761">
-                        <img src="https://images.unsplash.com/photo-1557844352-761f2565b576?auto=format&fit=crop&q=80&w=1000" alt="Viña Caliterra" class="project-img">
-                        <div class="project-overlay">
-                            <h3>Viña Caliterra</h3>
-                            <button class="btn-video" onclick="openModal('Viña Caliterra Project')">Ver Video del Proyecto</button>
-                        </div>
-                    </div>
-                    <div class="project-item hidden" data-video="https://player.vimeo.com/external/371433846.sd.mp4?s=2315b6325e0b02e7753695d2906ec5418933b91a&profile_id=164&oauth2_token_id=57447761">
-                        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b0c3ebb?auto=format&fit=crop&q=80&w=1000" alt="Viña Errázuriz" class="project-img">
-                        <div class="project-overlay">
-                            <h3>Viña Errázuriz</h3>
-                            <button class="btn-video" onclick="openModal('Viña Errázuriz Project')">Ver Video del Proyecto</button>
-                        </div>
-                    </div>
-                    <!-- More projects as needed -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contacto">
-            <div class="contact-wrapper">
-                <h2 class="section-title hidden">Contáctanos</h2>
-                <form class="contact-form hidden" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder=" " required>
-                        <label for="name">Nombre Completo</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder=" " required>
-                        <label for="email">Email Corporativo</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" placeholder=" " required>
-                        <label for="subject">Asunto</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="4" placeholder=" " required></textarea>
-                        <label for="message">Mensaje</label>
-                    </div>
-                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Ingenov. Todos los derechos reservados. Expertos en Ingeniería Ambiental.</p>
-    </footer>
-
-    <!-- Video Modal -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="videoPlayerContainer">
-                <iframe width="100%" height="562.5" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                <h3>Optimización</h3>
+                <p>Mejoramos el desempeño de sistemas de tratamientos físicos, químicos y biológicos para una operación estable.</p>
             </div>
         </div>
-    </div>
+
+        <!-- ÁREAS DE TRABAJO -->
+        <div class="container section-header reveal-up" style="margin-top: 100px;">
+            <h2>ÁREAS DE TRABAJO</h2>
+            <p class="subtitle">SOLUCIONES ESPECÍFICAS PARA CADA SECTOR</p>
+        </div>
+
+        <div class="container areas-grid">
+            <div class="area-card reveal-left">
+                <div class="area-header">
+                    <div class="icon-wrapper glass">🏗️</div>
+                    <h3>CONSTRUCCIÓN</h3>
+                </div>
+                <ul>
+                    <li>Construcción de platas de tratamiento de aguas residuales y RILes</li>
+                    <li>Suministro y montaje electromecánico</li>
+                    <li>Puesta en marcha y puesta a punto de sistemas de tratamiento</li>
+                    <li>Modificación Obras Civiles</li>
+                    <li>Mejoras Tecnológicas</li>
+                </ul>
+            </div>
+            
+            <div class="area-card reveal-right">
+                <div class="area-header">
+                    <div class="icon-wrapper glass">📊</div>
+                    <h3>GESTIÓN - PREVENCIÓN AMBIENTAL</h3>
+                </div>
+                <ul>
+                    <li>Evaluaciones Ambientales y estudios preinversionales</li>
+                    <li>Declaración de Impacto Ambiental</li>
+                    <li>Estudio de Impacto Ambiental</li>
+                    <li>Evaluación y tramitación sectorial y de permisos</li>
+                    <li>Auditorías y diagnósticos ambientales (due diligence)</li>
+                    <li>Diseño e instalación de sistemas de agua potable</li>
+                    <li>Proyectos de optimización energética de procesos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRABAJOS DESTACADOS -->
+    <section id="trabajos" class="dark-section">
+        <div class="container section-header reveal-up">
+            <h2>TRABAJOS</h2>
+            <p class="subtitle">EXPERIENCIA COMPROBADA EN TERRENO</p>
+        </div>
+        
+        <div class="container portfolio-grid">
+            <!-- Proyecto 1 -->
+            <div class="portfolio-item reveal-up">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1590483864455-ce7afcc750b2?auto=format&fit=crop&q=80&w=800" alt="Viña Errázuriz">
+                    <div class="portfolio-hover">
+                        <span>Ver Detalles</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Viña Errázuriz</h4>
+                    <p>Optimización y Tratamiento RILes</p>
+                </div>
+            </div>
+            
+            <!-- Proyecto 2 -->
+            <div class="portfolio-item reveal-up" style="transition-delay: 0.1s;">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1560645604-58a2e7ef6356?auto=format&fit=crop&q=80&w=800" alt="Viña Seña">
+                    <div class="portfolio-hover">
+                        <span>Ver Detalles</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Viña Seña</h4>
+                    <p>Mantenimiento de Planta</p>
+                </div>
+            </div>
+            
+            <!-- Proyecto 3 -->
+            <div class="portfolio-item reveal-up" style="transition-delay: 0.2s;">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=800" alt="Viña Caliterra">
+                    <div class="portfolio-hover">
+                        <span>Ver Detalles</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Viña Caliterra</h4>
+                    <p>Ingeniería Conceptual y Básica</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 4 -->
+            <div class="portfolio-item reveal-up">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b0c3ebb?auto=format&fit=crop&q=80&w=800" alt="Arboleda">
+                    <div class="portfolio-hover">
+                        <span>Ver Detalles</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Viña Arboleda</h4>
+                    <p>Instalación Electromecánica</p>
+                </div>
+            </div>
+
+             <!-- Proyecto 5 -->
+             <div class="portfolio-item reveal-up" style="transition-delay: 0.1s;">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1518176259654-20b15b63bc2d?auto=format&fit=crop&q=80&w=800" alt="Valle Negro">
+                    <div class="portfolio-hover">
+                        <span>Ver Detalles</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Agropecuaria Valle Negro</h4>
+                    <p>Tratamiento Aguas Residuales</p>
+                </div>
+            </div>
+
+             <!-- Proyecto 6 -->
+             <div class="portfolio-item reveal-up" style="transition-delay: 0.2s;">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1557844352-761f2565b576?auto=format&fit=crop&q=80&w=800" alt="RILes">
+                    <div class="portfolio-hover">
+                        <span>Ver Detalles</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Gestión RILes</h4>
+                    <p>Cumplimiento Normativo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONÓCENOS Y LÍDER -->
+    <section id="conocenos">
+        <div class="container section-header reveal-up">
+            <h2>CONÓCENOS</h2>
+            <p class="subtitle">NUESTRA TRAYECTORIA EN EL TIEMPO</p>
+        </div>
+
+        <div class="timeline container">
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2010</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Naces Nuestras Raíces</h4>
+                    <p>Comenzamos con un pequeño equipo enfocado en la consultoría ambiental y resolviendo problemáticas locales de gestión de aguas.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2013</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Primer Y gran desafío</h4>
+                    <p>Adjudicamos nuestro primer gran proyecto integral para el tratamiento de riles en la industria vitivinícola marcando un precedente.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2017</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Consolidación</h4>
+                    <p>Expansión de nuestras áreas de ingeniería y construcción, permitiéndonos ofrecer una solución "Llave en Mano" a nuestros clientes.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal-up">
+                <div class="timeline-date">2018+</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Innovación Continua</h4>
+                    <p>Apertura a nuevas tecnologías sustentables y optimización energética, proyectando el futuro del tratamiento de aguas para el 2030.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="leader-section container reveal-up" style="margin-top: 100px; text-align: center;">
+            <h2>¿NUESTRO LÍDER?</h2>
+            <div class="leader-profile">
+                <div class="leader-avatar">N</div>
+                <h3>RODRIGO PINO GAJARDO</h3>
+                <p class="role">GERENTE GENERAL - INGENIERO AMBIENTAL</p>
+                <div class="leader-bio">
+                    <p>Con más de 15 años de experiencia liderando proyectos de alta complejidad en ingeniería ambiental. Orientado a resultados, con profunda visión sustentable y técnica, ha consolida a Ingenov como un referente en el sector.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO (Con fondo de mapa interactivo visual) -->
+    <section id="contacto" class="map-bg-section">
+        <div class="map-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="section-header reveal-up" style="color: white; margin-bottom: 50px;">
+                <h2 style="color: white; font-weight: 800; font-size: 3rem;">¡CONTÁCTANOS!</h2>
+                <p class="subtitle" style="color: var(--accent);">ESTAMOS LISTOS PARA TU PRÓXIMO PROYECTO</p>
+            </div>
+            
+            <form class="contact-form-premium reveal-up">
+                <div class="form-row">
+                    <input type="text" placeholder="TU NOMBRE *" required minlength="2">
+                    <input type="email" placeholder="TU MAIL *" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="ASUNTO *" required>
+                </div>
+                <div class="form-row">
+                    <textarea placeholder="TU MENSAJE AQUÍ..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>INGENOV © 2026</p>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>
