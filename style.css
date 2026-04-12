@@ -260,7 +260,7 @@ section { padding: 120px 0; }
 /* TIMELINE - CONÓCENOS */
 .timeline { position: relative; max-width: 800px; margin: 50px auto 0; }
 .timeline::after {
-    content: ''; position: absolute; width: 2px; background: #E2E8F0;
+    content: ''; position: absolute; width: 2px; background: rgba(255,255,255,0.1); /* Dark mode soft line */
     top: 0; bottom: 0; left: 50%; margin-left: -1px; z-index: 1;
 }
 .timeline-item { position: relative; width: 50%; padding: 0 40px; margin-bottom: 50px; }
@@ -269,22 +269,24 @@ section { padding: 120px 0; }
 .timeline-dot {
     position: absolute;; width: 20px; height: 20px;
     background: var(--accent); border-radius: 50%; top: 5px;
-    z-index: 2; box-shadow: 0 0 0 4px white;
+    z-index: 2; box-shadow: 0 0 0 4px var(--bg-dark); /* Dark mode gap */
 }
 .timeline-item:nth-child(odd) .timeline-dot { right: -10px; }
 .timeline-item:nth-child(even) .timeline-dot { left: -10px; }
 .timeline-date {
-    font-size: 1.5rem; font-weight: 800; color: var(--primary);
+    font-size: 1.5rem; font-weight: 800; color: var(--white); /* White text */
     margin-bottom: 10px;
 }
 .timeline-content h4 { color: var(--accent); margin-bottom: 10px; }
+.timeline-content p { color: #A0AEC0; } /* Soft white for readability */
 
 /* LEADER PROFILE */
 .leader-section { margin-bottom: 50px; }
 .leader-profile {
     max-width: 900px; margin: 0 auto;
-    background: white; border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08); 
+    background: #1A1A1A; /* Dark mode card */
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
     display: flex; overflow: hidden;
     align-items: center;
 }
@@ -298,9 +300,9 @@ section { padding: 120px 0; }
 .leader-text-column {
     flex: 1.5; padding: 50px;
 }
-.leader-text-column h3 { font-size: 2rem; color: var(--primary); margin-bottom: 5px; }
+.leader-text-column h3 { font-size: 2rem; color: var(--white); margin-bottom: 5px; } /* White name */
 .leader-text-column .role { color: var(--accent); font-weight: 600; font-size: 1rem; margin-bottom: 20px; letter-spacing: 1px; }
-.leader-bio p { color: var(--text-muted); line-height: 1.8; }
+.leader-bio p { color: #A0AEC0; line-height: 1.8; } /* Soft white for bio */
 
 /* CONTACTO con mapa */
 .map-bg-section {
