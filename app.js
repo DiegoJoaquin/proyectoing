@@ -116,4 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     }
+
+    /* REEL VIDEO HOVER */
+    const reelVideos = document.querySelectorAll('.reel-video');
+    reelVideos.forEach(vid => {
+        vid.addEventListener('mouseenter', () => {
+            vid.play();
+        });
+        vid.addEventListener('mouseleave', () => {
+            vid.pause();
+        });
+    });
 });
