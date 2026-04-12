@@ -127,4 +127,39 @@ document.addEventListener('DOMContentLoaded', () => {
             vid.pause();
         });
     });
+
+    /* EFFECTO PRO 2026: MOUSE GLOW AURA */
+    const cursorGlow = document.querySelector('.cursor-glow');
+    if (cursorGlow) {
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    }
+
+    /* 3D MAGNETIC TILT EN TARJETAS */
+    const tiltCards = document.querySelectorAll('.service-card, .area-card');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Rotacion leve en base a la posición del mouse (Max 8 grados)
+                const rotateX = ((y - centerY) / centerY) * -8; 
+                const rotateY = ((x - centerX) / centerX) * 8;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            requestAnimationFrame(() => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+    });
 });
