@@ -59,6 +59,7 @@ header.scrolled {
 }
 .logo span { color: var(--accent); }
 header.scrolled .logo { color: var(--primary); }
+header.scrolled .logo img { filter: brightness(0.1); }
 
 nav ul { display: flex; list-style: none; gap: 30px; }
 nav a {
