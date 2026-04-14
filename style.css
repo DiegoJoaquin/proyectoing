@@ -2,13 +2,14 @@
 
 :root {
     /* Color Palette */
-    --primary: #006b63; 
+    --primary: #212121; 
     --accent: #01A89C;  /* Corporate Logo Green */
     --accent-dark: #00877C;
     --text-main: #333333;
     --text-muted: #666666;
     --bg-light: #F9FAFB;
-    --bg-dark: #01A89C; /* Corporate Green instead of Black */
+    --bg-dark: #0A1918; /* Elegant Midnight Teal */
+    --bg-card: #122826; /* Dark premium card */
     --white: #FFFFFF;
     
     --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -96,7 +97,7 @@ nav a:hover, header.scrolled nav a:hover { color: var(--accent); }
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     /* Gradient to ensure text pops and adds a corporate feel */
-    background: linear-gradient(to bottom, rgba(1, 168, 156, 0.8), rgba(0, 107, 99, 0.8));
+    background: linear-gradient(to bottom, rgba(10, 25, 24, 0.8), rgba(10, 25, 24, 0.5));
 }
 
 #hero-particles {
@@ -219,8 +220,8 @@ section { padding: 120px 0; }
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
 }
 .portfolio-item {
-    background: #FFFFFF; border-radius: 10px; overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: var(--bg-card); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 1px solid rgba(1, 168, 156, 0.1);
 }
 .portfolio-img {
     position: relative; width: 100%; aspect-ratio: 4/3; overflow: hidden;
@@ -243,8 +244,8 @@ section { padding: 120px 0; }
 .portfolio-item:hover .portfolio-hover { opacity: 1; }
 .portfolio-item:hover .portfolio-hover span { transform: translateY(0); }
 .portfolio-info { padding: 20px; text-align: center; }
-.portfolio-info h4 { color: var(--primary); font-size: 1.2rem; }
-.portfolio-info p { color: var(--text-muted); font-size: 0.9rem; margin-top: 5px; }
+.portfolio-info h4 { color: var(--white); font-size: 1.2rem; }
+.portfolio-info p { color: var(--accent); font-size: 0.9rem; margin-top: 5px; }
 
 /* VIDEOS REEL / MODO INSTANTÁNEO */
 .video-reel-grid {
@@ -301,7 +302,7 @@ section { padding: 120px 0; }
 .timeline-dot {
     position: absolute; top: 0; left: 0; 
     width: 20px; height: 20px;
-    background: var(--white); border-radius: 50%;
+    background: var(--accent); border-radius: 50%;
     z-index: 2; box-shadow: 0 0 0 4px var(--bg-dark); 
 }
 
@@ -309,16 +310,16 @@ section { padding: 120px 0; }
     font-size: 1.5rem; font-weight: 800; color: var(--white); 
     margin-bottom: 10px;
 }
-.timeline-content h4 { color: var(--white); margin-bottom: 10px; }
-.timeline-content p { color: rgba(255,255,255,0.9); }
+.timeline-content h4 { color: var(--accent); margin-bottom: 10px; }
+.timeline-content p { color: #A0AEC0; }
 
 /* LEADER PROFILE */
 .leader-section { margin-bottom: 50px; }
 .leader-profile {
     max-width: 900px; margin: 0 auto;
-    background: #FFFFFF; /* Changed to white */
+    background: var(--bg-card); /* Dark elegant card */
     border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15); 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid rgba(1, 168, 156, 0.1);
     display: flex; overflow: hidden;
     align-items: center;
 }
@@ -332,9 +333,9 @@ section { padding: 120px 0; }
 .leader-text-column {
     flex: 1.5; padding: 50px;
 }
-.leader-text-column h3 { font-size: 2rem; color: var(--primary); margin-bottom: 5px; } /* Primary name */
+.leader-text-column h3 { font-size: 2rem; color: var(--white); margin-bottom: 5px; } /* White name */
 .leader-text-column .role { color: var(--accent); font-weight: 600; font-size: 1rem; margin-bottom: 20px; letter-spacing: 1px; }
-.leader-bio p { color: var(--text-muted); line-height: 1.8; } /* Muted for bio */
+.leader-bio p { color: #A0AEC0; line-height: 1.8; } /* Muted for bio */
 
 /* CONTACTO con mapa */
 .map-bg-section {
@@ -345,7 +346,7 @@ section { padding: 120px 0; }
 }
 .map-overlay {
     position: absolute; top:0; left:0; width:100%; height:100%;
-    background: rgba(1, 168, 156, 0.9); z-index: 1;
+    background: rgba(10, 25, 24, 0.85); z-index: 1;
 }
 .contact-form-premium {
     max-width: 800px; margin: 0 auto; background: transparent;
@@ -375,7 +376,7 @@ section { padding: 120px 0; }
 
 /* FOOTER */
 footer {
-    background: #006059; padding: 30px; text-align: center; color: rgba(255,255,255,0.8);
+    background: #061211; padding: 30px; text-align: center; color: rgba(255,255,255,0.6);
 }
 
 /* ANIMATION CLASSES */
