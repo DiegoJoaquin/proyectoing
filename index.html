@@ -235,41 +235,13 @@
             </div>
         </div>
         <!-- VIDEOS REEL / MODO INSTANTÁNEO -->
-        <section id="videos-reel" class="dark-section">
+        <section id="videos-reel" class="dark-section" style="overflow: hidden; padding-bottom: 0;">
             <div class="container section-header reveal-up">
                 <h2>REEL DE TRABAJOS</h2>
-                <p class="subtitle" style="color: var(--accent);">NUESTRA INGENIERÍA EN ACCIÓN - ACERCA EL MOUSE PARA
-                    VER</p>
+                <p class="subtitle" style="color: var(--accent);">NUESTRA INGENIERÍA EN ACCIÓN - DESLIZA PARA VER</p>
             </div>
 
-            <div class="container video-reel-grid">
-                <div class="video-card reveal-up">
-                    <video
-                        src="https://player.vimeo.com/external/371433846.sd.mp4?s=2315b6325e0b02e7753695d2906ec5418933b91a&profile_id=164&oauth2_token_id=57447761"
-                        muted loop playsinline class="reel-video"></video>
-                    <div class="video-overlay-text">
-                        <h4>Puesta en marcha PTAS</h4>
-                    </div>
-                </div>
-
-                <div class="video-card reveal-up" style="transition-delay: 0.1s;">
-                    <video
-                        src="https://player.vimeo.com/external/494163956.sd.mp4?s=694dc5067466184a42b7816f1ef14032ba8e5033&profile_id=165&oauth2_token_id=57447761"
-                        muted loop playsinline class="reel-video"></video>
-                    <div class="video-overlay-text">
-                        <h4>Mantenimiento Reactores</h4>
-                    </div>
-                </div>
-
-                <div class="video-card reveal-up" style="transition-delay: 0.2s;">
-                    <video
-                        src="https://player.vimeo.com/external/530183187.sd.mp4?s=9107936a28731fca0d4944fe2a2080dfd3246ebc&profile_id=164&oauth2_token_id=57447761"
-                        muted loop playsinline class="reel-video"></video>
-                    <div class="video-overlay-text">
-                        <h4>Tratamiento RILes - Viñas</h4>
-                    </div>
-                </div>
-            </div>
+            <div id="circular-gallery-container" class="circular-gallery reveal-up" style="width: 100%; height: 75vh; min-height: 500px; max-height: 700px;"></div>
         </section>
 
         <!-- CONÓCENOS Y LÍDER -->
@@ -375,6 +347,7 @@
         <!-- EFECTO CURSOR 2026 (Aura) -->
         <div class="cursor-glow"></div>
 
+        <script type="module" src="circular-gallery.js"></script>
         <script src="app.js"></script>
 </body>
 
