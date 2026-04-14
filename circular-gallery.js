@@ -1,4 +1,4 @@
-import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://cdn.skypack.dev/ogl';
+const { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } = window.ogl;
 
 function debounce(func, wait) {
   let timeout;
@@ -365,13 +365,13 @@ class App {
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
     window.addEventListener('resize', this.boundOnResize);
-    window.addEventListener('mousewheel', this.boundOnWheel);
-    window.addEventListener('wheel', this.boundOnWheel);
+    window.addEventListener('mousewheel', this.boundOnWheel, { passive: true });
+    window.addEventListener('wheel', this.boundOnWheel, { passive: true });
     window.addEventListener('mousedown', this.boundOnTouchDown);
     window.addEventListener('mousemove', this.boundOnTouchMove);
     window.addEventListener('mouseup', this.boundOnTouchUp);
-    window.addEventListener('touchstart', this.boundOnTouchDown);
-    window.addEventListener('touchmove', this.boundOnTouchMove);
+    window.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
+    window.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
     window.addEventListener('touchend', this.boundOnTouchUp);
   }
   destroy() {
@@ -391,16 +391,15 @@ class App {
   }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+function initGallery() {
   const container = document.getElementById('circular-gallery-container');
   if (container) {
     const items = [
-      { image: 'https://images.unsplash.com/photo-1590483864455-ce7afcc750b2?auto=format&fit=crop&q=80&w=800', text: 'Puesta en marcha PTAS' },
-      { image: 'https://images.unsplash.com/photo-1560645604-58a2e7ef6356?auto=format&fit=crop&q=80&w=800', text: 'Mantenimiento Reactores' },
-      { image: 'https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=800', text: 'Tratamiento Viñas' },
+      { image: 'https://images.unsplash.com/photo-1590483864455-ce7afcc750b2?auto=format&fit=crop&q=80&w=800', text: 'Puesta en marcha' },
+      { image: 'https://images.unsplash.com/photo-1560645604-58a2e7ef6356?auto=format&fit=crop&q=80&w=800', text: 'Mantenimiento' },
+      { image: 'https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=800', text: 'Sistemas Viñas' },
       { image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b0c3ebb?auto=format&fit=crop&q=80&w=800', text: 'Electromecánica' },
-      { image: 'https://images.unsplash.com/photo-1518176259654-20b15b63bc2d?auto=format&fit=crop&q=80&w=800', text: 'Aguas Residuales' }
+      { image: 'https://images.unsplash.com/photo-1518176259654-20b15b63bc2d?auto=format&fit=crop&q=80&w=800', text: 'A. Residuales' }
     ];
     
     new App(container, {
@@ -413,4 +412,11 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollEase: 0.05
     });
   }
-});
+}
+
+// Execute immediately if DOM is ready, otherwise wait.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initGallery);
+} else {
+  initGallery();
+}
