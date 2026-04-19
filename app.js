@@ -223,6 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         reelItems.forEach((item, index) => {
             const vid = item.querySelector('.reel-video');
+            const progressFill = item.querySelector('.reel-progress-fill');
+            
+            if (vid && progressFill) {
+                vid.addEventListener('timeupdate', () => {
+                    const progress = (vid.currentTime / vid.duration) * 100;
+                    progressFill.style.width = progress + '%';
+                });
+            }
             
             // Hover to play preview if it's not the active one
             item.addEventListener('mouseenter', () => {
@@ -235,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
             item.addEventListener('mouseleave', () => {
                 if (index !== currentReelIndex && vid) {
                     vid.pause();
+                    // Optional: reset preview video to start.
+                    // vid.currentTime = 0;
                 }
             });
             

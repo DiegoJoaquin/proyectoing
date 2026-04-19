@@ -248,16 +248,24 @@ section { padding: 120px 0; }
 .portfolio-info h4 { color: #006059; font-size: 1.2rem; }
 .portfolio-info p { color: var(--text-muted); font-size: 0.9rem; margin-top: 5px; }
 
-/* GALERIA DE PROYECTOS (TABS Y GRILLES 2x2) */
+/* GALERIA DE PROYECTOS (ESTILO PREMIUM TABS) */
+.gallery-tabs-wrapper { text-align: center; }
 .gallery-tabs {
-    display: flex; gap: 15px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap;
+    display: inline-flex; gap: 5px; justify-content: center; margin-bottom: 50px; flex-wrap: wrap;
+    background: #f1f5f9; padding: 6px; border-radius: 50px;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
 }
 .tab-btn {
-    padding: 12px 25px; border: 2px solid var(--accent); background: transparent;
-    color: var(--primary); font-weight: 700; border-radius: 30px; cursor: pointer;
-    transition: var(--transition);
+    padding: 12px 30px; border: none; background: transparent;
+    color: var(--text-muted); font-weight: 600; border-radius: 40px; cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem; letter-spacing: 0.5px;
 }
-.tab-btn:hover, .tab-btn.active { background: var(--accent); color: white; box-shadow: 0 5px 15px rgba(1, 168, 156, 0.3); }
+.tab-btn:hover { color: var(--primary); background: rgba(255,255,255,0.5); }
+.tab-btn.active { 
+    background: #ffffff; color: var(--accent-dark); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
 .gallery-content-wrapper { position: relative; }
 .tab-content { display: none; animation: fadeIn 0.5s ease; }
 .tab-content.active { display: block; }
@@ -269,11 +277,11 @@ section { padding: 120px 0; }
 .carousel-track { display: flex; list-style: none; transition: transform 0.5s ease-in-out; margin: 0; padding: 0;}
 .carousel-slide { min-width: 100%; box-sizing: border-box; }
 .grid-2x2 {
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px;
-    height: 500px; /* Fixed height for consistent 2x2 look */
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+    /* Aspect-ratio individual evita que se corten las imágenes independiente del ancho */
 }
 .grid-2x2 img {
-    width: 100%; height: 100%; object-fit: cover; border-radius: 10px;
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;
 }
 .grid-2x2 img:hover { transform: scale(1.03); z-index: 2; position: relative; }
@@ -297,11 +305,22 @@ section { padding: 120px 0; }
     filter: brightness(0.6); transform: scale(0.95); cursor: pointer;
 }
 .reel-item:hover { filter: brightness(0.8); }
-.reel-item.active-reel { filter: brightness(1); transform: scale(1.05); z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+.reel-item.active-reel { filter: brightness(1); transform: scale(1.05); z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+
 .reel-video { 
     width: 100%; height: 100%; object-fit: cover; background: #000;
     border: 1px solid rgba(255,255,255,0.1);
 }
+
+.reel-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white; pointer-events: none; opacity: 0; transition: opacity 0.4s ease;
+}
+.reel-item.active-reel .reel-overlay { opacity: 1; }
+.reel-title { margin-bottom: 12px; font-weight: 700; font-size: 1.1rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8); font-family: 'Outfit', sans-serif;}
+.reel-progress-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; }
+.reel-progress-fill { width: 0%; height: 100%; background: var(--accent); transition: width 0.1s linear; }
 
 /* TIMELINE HORIZONTAL - CONÓCENOS */
 .timeline { 
