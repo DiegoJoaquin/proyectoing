@@ -147,16 +147,137 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* REEL VIDEO HOVER */
-    const reelVideos = document.querySelectorAll('.reel-video');
-    reelVideos.forEach(vid => {
-        vid.addEventListener('mouseenter', () => {
-            vid.play();
-        });
-        vid.addEventListener('mouseleave', () => {
-            vid.pause();
+    /* TABS GALERÍA DE FOTOS */
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+            
+            btn.classList.add('active');
+            const target = btn.getAttribute('data-target');
+            const targetElement = document.getElementById(target);
+            if (targetElement) {
+                targetElement.classList.add('active');
+            }
         });
     });
+
+    /* PHOTO CAROUSEL LOGIC */
+    const photoCarousels = document.querySelectorAll('.photo-carousel');
+    photoCarousels.forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        if (!track) return;
+        const slides = Array.from(track.children);
+        const nextButton = carousel.querySelector('.next-btn');
+        const prevButton = carousel.querySelector('.prev-btn');
+        let currentIndex = 0;
+
+        const updateSlidePosition = () => {
+            track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        };
+
+        if(nextButton) {
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < slides.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // loop back
+                }
+                updateSlidePosition();
+            });
+        }
+
+        if(prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = slides.length - 1; // loop to end
+                }
+                updateSlidePosition();
+            });
+        }
+    });
+
+    /* REEL CAROUSEL LOGIC */
+    const reelCarousel = document.querySelector('.reel-carousel');
+    if (reelCarousel) {
+        const reelTrack = reelCarousel.querySelector('.reel-track');
+        const reelSlides = Array.from(reelTrack.children);
+        const nextReel = reelCarousel.querySelector('.reel-next-btn');
+        const prevReel = reelCarousel.querySelector('.reel-prev-btn');
+        let currentReelIndex = 0;
+
+        // Auto play current video, pause others
+        const handleVideos = () => {
+            reelSlides.forEach((slide, idx) => {
+                const vid = slide.querySelector('.reel-video');
+                if (!vid) return;
+                if (idx === currentReelIndex) {
+                    vid.play().catch(() => {});
+                } else {
+                    vid.pause();
+                }
+            });
+        };
+
+        const updateReelPosition = () => {
+            reelSlides.forEach(slide => slide.classList.remove('current-slide'));
+            if (reelSlides[currentReelIndex]) {
+                reelSlides[currentReelIndex].classList.add('current-slide');
+            }
+            
+            // Calculate translation based on slide width including flex gap/padding
+            const slideWidth = reelSlides[0].getBoundingClientRect().width;
+            reelTrack.style.transform = 'translateX(-' + (currentReelIndex * slideWidth) + 'px)';
+            handleVideos();
+        };
+
+        if(nextReel) {
+            nextReel.addEventListener('click', () => {
+                if (currentReelIndex < reelSlides.length - 1) {
+                    currentReelIndex++;
+                    updateReelPosition();
+                }
+            });
+        }
+        if(prevReel) {
+            prevReel.addEventListener('click', () => {
+                if (currentReelIndex > 0) {
+                    currentReelIndex--;
+                    updateReelPosition();
+                }
+            });
+        }
+        
+        // Window resize adjustment
+        window.addEventListener('resize', updateReelPosition);
+        
+        // Play on Hover / focus for any visible reel
+        reelSlides.forEach(slide => {
+            const vid = slide.querySelector('.reel-video');
+            if(vid) {
+                slide.addEventListener('mouseenter', () => vid.play().catch(()=>{}));
+                slide.addEventListener('mouseleave', () => {
+                    // Only pause if not the current center slide
+                    if (currentReelIndex !== reelSlides.indexOf(slide)) {
+                        vid.pause();
+                    }
+                });
+            }
+            // Click to make it current
+            slide.addEventListener('click', () => {
+                currentReelIndex = reelSlides.indexOf(slide);
+                updateReelPosition();
+            });
+        });
+        
+        // Initialize
+        updateReelPosition();
+    }
 
     /* EFFECTO PRO 2026: MOUSE GLOW AURA */
     const cursorGlow = document.querySelector('.cursor-glow');
