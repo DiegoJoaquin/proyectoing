@@ -202,81 +202,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* REEL CAROUSEL LOGIC */
-    const reelCarousel = document.querySelector('.reel-carousel');
-    if (reelCarousel) {
-        const reelTrack = reelCarousel.querySelector('.reel-track');
-        const reelSlides = Array.from(reelTrack.children);
-        const nextReel = reelCarousel.querySelector('.reel-next-btn');
-        const prevReel = reelCarousel.querySelector('.reel-prev-btn');
+    /* REEL GRID LOGIC */
+    const reelGrid = document.querySelector('.reel-grid');
+    if (reelGrid) {
+        const reelItems = Array.from(reelGrid.children);
         let currentReelIndex = 0;
 
-        // Auto play current video, pause others
-        const handleVideos = () => {
-            reelSlides.forEach((slide, idx) => {
-                const vid = slide.querySelector('.reel-video');
-                if (!vid) return;
+        const updateReelState = () => {
+            reelItems.forEach((item, idx) => {
+                const vid = item.querySelector('.reel-video');
                 if (idx === currentReelIndex) {
-                    vid.play().catch(() => {});
+                    item.classList.add('active-reel');
+                    if (vid) vid.play().catch(() => {});
                 } else {
+                    item.classList.remove('active-reel');
+                    if (vid) vid.pause();
+                }
+            });
+        };
+
+        reelItems.forEach((item, index) => {
+            const vid = item.querySelector('.reel-video');
+            
+            // Hover to play preview if it's not the active one
+            item.addEventListener('mouseenter', () => {
+                if (index !== currentReelIndex && vid) {
+                    vid.play().catch(()=>{});
+                }
+            });
+            
+            // Mouse leave stops preview if it's not the active one
+            item.addEventListener('mouseleave', () => {
+                if (index !== currentReelIndex && vid) {
                     vid.pause();
                 }
             });
-        };
-
-        const updateReelPosition = () => {
-            reelSlides.forEach(slide => slide.classList.remove('current-slide'));
-            if (reelSlides[currentReelIndex]) {
-                reelSlides[currentReelIndex].classList.add('current-slide');
-            }
             
-            // Calculate translation based on slide width including flex gap/padding
-            const slideWidth = reelSlides[0].getBoundingClientRect().width;
-            reelTrack.style.transform = 'translateX(-' + (currentReelIndex * slideWidth) + 'px)';
-            handleVideos();
-        };
-
-        if(nextReel) {
-            nextReel.addEventListener('click', () => {
-                if (currentReelIndex < reelSlides.length - 1) {
-                    currentReelIndex++;
-                    updateReelPosition();
-                }
-            });
-        }
-        if(prevReel) {
-            prevReel.addEventListener('click', () => {
-                if (currentReelIndex > 0) {
-                    currentReelIndex--;
-                    updateReelPosition();
-                }
-            });
-        }
-        
-        // Window resize adjustment
-        window.addEventListener('resize', updateReelPosition);
-        
-        // Play on Hover / focus for any visible reel
-        reelSlides.forEach(slide => {
-            const vid = slide.querySelector('.reel-video');
-            if(vid) {
-                slide.addEventListener('mouseenter', () => vid.play().catch(()=>{}));
-                slide.addEventListener('mouseleave', () => {
-                    // Only pause if not the current center slide
-                    if (currentReelIndex !== reelSlides.indexOf(slide)) {
-                        vid.pause();
-                    }
-                });
-            }
-            // Click to make it current
-            slide.addEventListener('click', () => {
-                currentReelIndex = reelSlides.indexOf(slide);
-                updateReelPosition();
+            // Click to make it the active reel
+            item.addEventListener('click', () => {
+                currentReelIndex = index;
+                updateReelState();
             });
         });
         
         // Initialize
-        updateReelPosition();
+        updateReelState();
     }
 
     /* EFFECTO PRO 2026: MOUSE GLOW AURA */
