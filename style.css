@@ -277,11 +277,11 @@ section { padding: 120px 0; }
 .carousel-track { display: flex; list-style: none; transition: transform 0.5s ease-in-out; margin: 0; padding: 0;}
 .carousel-slide { min-width: 100%; box-sizing: border-box; }
 .grid-2x2 {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
-    /* Aspect-ratio individual evita que se corten las imágenes independiente del ancho */
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    max-width: 700px; margin: 0 auto;
 }
 .grid-2x2 img {
-    width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;
+    width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;
 }
 .grid-2x2 img:hover { transform: scale(1.03); z-index: 2; position: relative; }
@@ -296,8 +296,8 @@ section { padding: 120px 0; }
 /* REEL GRID NATIVO PARA VIDEOS */
 .reel-grid-container { padding: 40px 0; }
 .reel-grid { 
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; 
-    align-items: center; max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; 
+    align-items: center; max-width: 750px; margin: 0 auto;
 }
 .reel-item { 
     aspect-ratio: 9/16; position: relative; border-radius: 20px; overflow: hidden;
