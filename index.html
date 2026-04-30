@@ -496,16 +496,17 @@
                 <p class="subtitle" style="color: var(--accent);">ESTAMOS LISTOS PARA TU PRÓXIMO PROYECTO</p>
             </div>
 
-            <form class="contact-form-premium reveal-up">
+            <form id="contactForm" action="contact_me.php" method="POST" class="contact-form-premium reveal-up">
                 <div class="form-row">
-                    <input type="text" placeholder="TU NOMBRE *" required minlength="2">
-                    <input type="email" placeholder="TU MAIL *" required>
+                    <input type="text" name="name" id="name" placeholder="TU NOMBRE *" required minlength="2">
+                    <input type="email" name="email" id="email" placeholder="TU MAIL *" required>
                 </div>
                 <div class="form-row">
-                    <input type="text" placeholder="ASUNTO *" required>
+                    <input type="tel" name="phone" id="phone" placeholder="TU TELÉFONO *" required>
+                    <input type="text" name="subject" id="subject" placeholder="ASUNTO *" required>
                 </div>
                 <div class="form-row">
-                    <textarea placeholder="TU MENSAJE AQUÍ..." rows="5" required></textarea>
+                    <textarea name="message" id="message" placeholder="TU MENSAJE AQUÍ..." rows="5" required></textarea>
                 </div>
                 <button type="submit" class="btn-submit">ENVIAR</button>
             </form>

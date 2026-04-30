@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', initParticles);
 
-    /* FORM GLITCH / SUBMISSION MOCK */
+    /* FORM SUBMISSION / CONTACT_ME.PHP */
     const form = document.querySelector('.contact-form-premium');
     if(form) {
         form.addEventListener('submit', (e) => {
@@ -132,18 +132,44 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.opacity = '0.8';
             btn.disabled = true;
 
-            setTimeout(() => {
-                btn.textContent = '¡EXITO!';
-                btn.style.background = '#FFFFFF';
-                btn.style.color = '#159C75';
-                form.reset();
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if(response.ok) {
+                    btn.textContent = '¡ÉXITO!';
+                    btn.style.background = '#FFFFFF';
+                    btn.style.color = '#159C75';
+                    form.reset();
+                } else {
+                    btn.textContent = 'ERROR';
+                    btn.style.background = '#FF4444';
+                    btn.style.color = '#FFFFFF';
+                }
+                
                 setTimeout(() => {
                     btn.textContent = originalText;
                     btn.style.background = '';
                     btn.style.color = '';
                     btn.disabled = false;
+                    btn.style.opacity = '1';
                 }, 3000);
-            }, 1000);
+            })
+            .catch(error => {
+                btn.textContent = 'ERROR DE RED';
+                btn.style.background = '#FF4444';
+                btn.style.color = '#FFFFFF';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                }, 3000);
+            });
         });
     }
 
