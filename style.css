@@ -286,6 +286,7 @@ section { padding: 120px 0; }
     cursor: zoom-in;
 }
 .grid-2x2 img:hover { transform: scale(1.03); z-index: 2; position: relative; }
+.grid-2x2 img.cone-img { object-fit: contain !important; background-color: #f4f4f4; }
 
 /* LIGHTBOX MODAL */
 .lightbox-modal {
