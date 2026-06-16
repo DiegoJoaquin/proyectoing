@@ -324,10 +324,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxImg   = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+    const lightboxPrev  = document.getElementById('lightbox-prev');
+    const lightboxNext  = document.getElementById('lightbox-next');
 
-    const openLightbox = (src, alt) => {
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || '';
+    // Collect all gallery images dynamically
+    let galleryImages = [];
+    let currentLightboxIndex = 0;
+
+    const refreshGalleryImages = () => {
+        galleryImages = Array.from(document.querySelectorAll('.grid-2x2 img'));
+    };
+
+    const openLightbox = (index) => {
+        refreshGalleryImages();
+        currentLightboxIndex = index;
+        const img = galleryImages[currentLightboxIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
         lightboxModal.classList.add('open');
         document.body.style.overflow = 'hidden';
     };
@@ -335,13 +348,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeLightbox = () => {
         lightboxModal.classList.remove('open');
         document.body.style.overflow = '';
-        // Limpiar src tras la animación de salida
         setTimeout(() => { lightboxImg.src = ''; }, 300);
     };
 
+    const showPrev = () => {
+        refreshGalleryImages();
+        currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+        const img = galleryImages[currentLightboxIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+    };
+
+    const showNext = () => {
+        refreshGalleryImages();
+        currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+        const img = galleryImages[currentLightboxIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || '';
+    };
+
     // Click en cualquier imagen del grid de la galería
-    document.querySelectorAll('.grid-2x2 img').forEach(img => {
-        img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    refreshGalleryImages();
+    document.querySelectorAll('.grid-2x2 img').forEach((img, idx) => {
+        img.addEventListener('click', () => openLightbox(idx));
     });
 
     // Cerrar con botón X
@@ -350,8 +379,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cerrar al hacer click en el fondo
     if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
 
-    // Cerrar con tecla Escape
+    // Flechas prev / next
+    if (lightboxPrev) lightboxPrev.addEventListener('click', showPrev);
+    if (lightboxNext) lightboxNext.addEventListener('click', showNext);
+
+    // Teclado: Escape, ArrowLeft, ArrowRight
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightboxModal.classList.contains('open')) closeLightbox();
+        if (!lightboxModal.classList.contains('open')) return;
+        if (e.key === 'Escape')     closeLightbox();
+        if (e.key === 'ArrowLeft')  showPrev();
+        if (e.key === 'ArrowRight') showNext();
     });
 });
